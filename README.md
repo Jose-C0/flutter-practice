@@ -1,7 +1,7 @@
 # Ejercicios básicos dart  
 
 [x] 1. Build your first app  
-2. Add interactivity to your app  
+[X] 2. Add interactivity to your app  
 3. Write asynchronous code  
 4. Organize code with packages and libraries  
 5. Define relationships with classes  
