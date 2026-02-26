@@ -1,1 +1,9 @@
-* text=auto   
+# Ensure LF line endings even on Windows
+*.txt text eol=lf
+
+# Forzar CRLF para scripts de Windows
+*.{cmd,[cC] [mM] [dD]} text eol=crlf
+*.{bat,[bB] [aA] [tT]} text eol=crlf
+
+# Forzar LF para scripts bash
+*.sh text eol=lf
