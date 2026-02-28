@@ -3,7 +3,7 @@
 [x] 1. Build your first app  
 [X] 2. Add interactivity to your app  
 [X] 3. Write asynchronous code  
-4. Organize code with packages and libraries  
+[x] 4. Organize code with packages and libraries  
 5. Define relationships with classes  
 6. Handle errors gracefully  
 7. Extend your app with enums and extensions  

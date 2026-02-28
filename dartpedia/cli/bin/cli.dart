@@ -1,68 +1,8 @@
-// import 'package:cli/cli.dart' as cli;
-import 'dart:io'; // Add this line at the top
-import 'package:http/http.dart' as http; // Add this line
+import 'dart:io';
+import 'package:http/http.dart' as http;
+import 'package:command_runner/command_runner.dart';
 
-const version = '0.0.1'; // Add this line
-
-// ... (existing const version declaration and printUsage function)
-
-
-// ... (existing const version declaration and printUsage function)
-
-void main(List<String> arguments) {
-  if (arguments.isEmpty || arguments.first == 'help') {
-    printUsage();
-  } else if (arguments.first == 'version') {
-    print('Dartpedia CLI version $version');
-  } else if (arguments.first == 'wikipedia') { // Changed to 'wikipedia'
-    // Pass all arguments *after* 'wikipedia' to searchWikipedia
-    final inputArgs = arguments.length > 1 ? arguments.sublist(1) : null;
-    searchWikipedia(inputArgs); // Call searchWikipedia (no 'await' needed here for main)
-  } else {
-    printUsage(); // Catch all for any unrecognized command.
-  }
-}
-
-
-Future<String> getWikipediaArticle(String articleTitle) async {
-  final url = Uri.https(
-    'en.wikipedia.org',
-    '/api/rest_v1/page/summary/$articleTitle',
-  );
-  final response = await http.get(url); // Make the HTTP request
-
-  if (response.statusCode == 200) {
-    return response.body; // Return the response body if successful
-  }
-
-  // Return an error message if the request failed
-  return 'Error: Failed to fetch article "$articleTitle". Status code: ${response.statusCode}';
-}
-
-void searchWikipedia(List<String>? arguments) async {
-  final String articleTitle;
-
-  if (arguments == null || arguments.isEmpty) {
-    print('Please provide an article title.');
-    final inputFromStdin = stdin.readLineSync(); // Read input
-    if (inputFromStdin == null || inputFromStdin.isEmpty) {
-      print('No article title provided. Exiting.');
-      return; // Exit the function if no valid input
-    }
-    articleTitle = inputFromStdin;
-  } else {
-    articleTitle = arguments.join(' ');
-  }
-
-  print('Looking up articles about "$articleTitle". Please wait.');
-  print('Here ya go!');
-  print('(Pretend this is an article about "$articleTitle")');
-}
-
-
-
-void printUsage() { // Add this new function
-  print(
-      "The following commands are valid: 'help', 'version', 'search <ARTICLE-TITLE>'"
-  );
+void main(List<String> arguments) async { // main is now async and awaits the runner
+  var runner = CommandRunner(); // Create an instance of your new CommandRunner
+  await runner.run(arguments); // Call its run method, awaiting its Future<void>
 }
