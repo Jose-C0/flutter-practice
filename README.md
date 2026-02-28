@@ -4,7 +4,7 @@
 [X] 2. Add interactivity to your app  
 [X] 3. Write asynchronous code  
 [x] 4. Organize code with packages and libraries  
-5. Define relationships with classes  
+[x] 5. Define relationships with classes  
 6. Handle errors gracefully  
 7. Extend your app with enums and extensions  
 8. Polish your CLI app  
